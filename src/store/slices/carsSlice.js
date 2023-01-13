@@ -1,6 +1,6 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-const initialState = { searchTerm: '', cars: [] };
+const initialState = { searchTerm: '', data: [] };
 
 const carsSlice = createSlice({
   name: 'cars',
@@ -10,15 +10,15 @@ const carsSlice = createSlice({
       state.searchTerm = action.payload;
     },
     addCar(state, action) {
-      state.cars.push({
+      state.data.push({
         name: action.payload.name,
         cost: action.payload.cost,
         id: nanoid(),
       });
     },
     removeCar(state, action) {
-      const updated = state.cars.filter(car => car.id !== action.payload);
-      state.cars = updated;
+      const updated = state.data.filter(car => car.id !== action.payload);
+      state.data = updated;
     },
   },
 });
